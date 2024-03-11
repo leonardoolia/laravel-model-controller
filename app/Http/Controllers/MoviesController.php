@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Movie;
 
 class MoviesController extends Controller
 {
     public function __invoke()
     {
-        return view('movies');        
+        $movies = Movie::select('*')->get();
+        return view('movies', compact('movies'));        
     }
     
 }
